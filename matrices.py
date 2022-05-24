@@ -1,6 +1,7 @@
 # ******* CALCULADORA CON OPERACIONES MATRICIALES *******
 
 # Declaramos la lista matriz_A y la lista matriz_B que contendra los elementos de la primera y segunda matriz respectivamente
+import numpy as np
 matriz_A = []
 matriz_B = []
 
@@ -10,7 +11,7 @@ def mostrar_operaciones():
 	1_ Suma de matrices
 	2_ Resta de matrices
 	3_ Multiplicacion de matrices
-	4_ Adjunto de una matriz
+	4_ Determinante de una matriz
 
 	"""
 	print(menu)
@@ -56,7 +57,17 @@ def resta_matrices(matriz1,matriz2):
 	return matriz_resta
 
 def producto_matrices(matriz1,matriz2):
+    a = np.array(matriz1)
+    b = np.array(matriz2)
+    matriz_producto = a.dot(b)
+    return matriz_producto
 	
+def determinante_matriz(matriz1,matriz2):
+    a = np.array(matriz1)
+    b = np.array(matriz2)
+    determinante_a = np.linalg.det(a)
+    determinante_b = np.linalg.det(b)
+    return determinante_a,determinante_b
 
 # Mostramos el menu con las operaciones
 mostrar_operaciones()
@@ -81,11 +92,18 @@ pedir_elementos(filas2,matriz_B)
 
 if opcion == "1":
 	matriz_suma = suma_matrices(matriz_A,matriz_B)
-	
+	print(matriz_suma)
 elif opcion == "2":
 	matriz_resta = resta_matrices(matriz_A,matriz_B)
+	print(matriz_resta)
 
 elif opcion == "3":
-	pass
+	matriz_producto = producto_matrices(matriz_A,matriz_B)
+	print(matriz_producto)
 elif opcion == "4":
-	pass
+	determinante_A, determinante_B = determinante_matriz(matriz_A,matriz_B)
+	print(determinante_A)
+	print(determinante_B)
+	
+	
+	
